@@ -1,6 +1,6 @@
 {
   "name": "shallow-equal",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Minimalistic shallow equality check for arrays/objects",
   "repository": {
     "type": "git",
@@ -13,6 +13,7 @@
     "dist": "rm -rf arrays objects && mkdir arrays objects && cp src/arrays.js arrays/index.js && cp src/objects.js objects/index.js",
     "prebuild": "npm run lint && npm test",
     "build": "npm run dist",
+    "preversion": "npm run prebuild",
     "postversion": "git push && git push --tags",
     "prepublish": "npm run dist"
   },
