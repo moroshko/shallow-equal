@@ -1,4 +1,5 @@
 [![Build Status][status-image]][status-url]
+[![Coverage Status][coverage-image]][coverage-url]
 [![NPM Version][npm-image]][npm-url]
 
 ## Description
@@ -39,5 +40,7 @@ shallowEqualObjects({ a: 5, b: {} }, { a: 5, b: {} })         // => false
 
 [status-image]: https://img.shields.io/codeship/53d0b900-42a9-0134-35d6-5a9bff506e9c/master.svg
 [status-url]: https://codeship.com/projects/168228
+[coverage-image]: https://img.shields.io/codecov/c/github/moroshko/shallow-equal/master.svg
+[coverage-url]: https://codecov.io/gh/moroshko/shallow-equal
 [npm-image]: https://img.shields.io/npm/v/shallow-equal.svg
 [npm-url]: https://npmjs.org/package/shallow-equal
