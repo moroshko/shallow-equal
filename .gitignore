@@ -1,4 +1,5 @@
 node_modules
+coverage
 arrays
 objects
 npm-debug.log

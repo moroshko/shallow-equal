@@ -9,7 +9,7 @@
   "author": "Misha Moroshko <michael.moroshko@gmail.com>",
   "scripts": {
     "lint": "eslint src",
-    "test": "mocha src/*.test.js",
+    "test": "istanbul cover _mocha src/*.test.js && istanbul check-coverage --statement 100 --branch 100 --function 100 --line 100",
     "dist": "rm -rf arrays objects && mkdir arrays objects && cp src/arrays.js arrays/index.js && cp src/objects.js objects/index.js",
     "prebuild": "npm run lint && npm test",
     "build": "npm run dist",
@@ -21,6 +21,7 @@
     "chai": "^3.5.0",
     "eslint": "^3.2.2",
     "eslint-plugin-mocha": "^4.3.0",
+    "istanbul": "^0.4.4",
     "mocha": "^3.0.2"
   },
   "files": [
