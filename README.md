@@ -1,6 +1,7 @@
-[![Build Status][status-image]][status-url]
-[![Coverage Status][coverage-image]][coverage-url]
-[![NPM Version][npm-image]][npm-url]
+<a href="https://codeship.com/projects/168228" target="_blank"><img src="https://img.shields.io/codeship/53d0b900-42a9-0134-35d6-5a9bff506e9c/master.svg" alt="Build Status"></a>
+<a href="https://codecov.io/gh/moroshko/shallow-equal" target="_blank"><img src="https://img.shields.io/codecov/c/github/moroshko/shallow-equal/master.svg" alt="Coverage Status"></a>
+<a href="https://www.bithound.io/github/moroshko/shallow-equal" target="_blank"><img src="https://www.bithound.io/github/moroshko/shallow-equal/badges/score.svg" alt="bitHound Overall Score"></a>
+<a href="https://npmjs.org/package/shallow-equal" target="_blank"><img src="https://img.shields.io/npm/v/shallow-equal.svg" alt="NPM Version"></a>
 
 ## Description
 
@@ -36,11 +37,4 @@ shallowEqualObjects({ a: 5, b: {} }, { a: 5, b: {} })         // => false
 
 ## License
 
-[MIT](http://moroshko.mit-license.org)
-
-[status-image]: https://img.shields.io/codeship/53d0b900-42a9-0134-35d6-5a9bff506e9c/master.svg
-[status-url]: https://codeship.com/projects/168228
-[coverage-image]: https://img.shields.io/codecov/c/github/moroshko/shallow-equal/master.svg
-[coverage-url]: https://codecov.io/gh/moroshko/shallow-equal
-[npm-image]: https://img.shields.io/npm/v/shallow-equal.svg
-[npm-url]: https://npmjs.org/package/shallow-equal
+<a href="http://moroshko.mit-license.org" target="_blank">MIT</a>
