@@ -1,3 +1,5 @@
+var is = require('./is')
+
 module.exports = function shallowEqualObjects(objA, objB) {
   if (objA === objB) {
     return true;
@@ -14,7 +16,7 @@ module.exports = function shallowEqualObjects(objA, objB) {
   for (var i = 0; i < len; i++) {
     var key = aKeys[i];
 
-    if (objA[key] !== objB[key]) {
+    if (!is(objA[key], objB[key])) {
       return false;
     }
   }
