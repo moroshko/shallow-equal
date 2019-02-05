@@ -3,6 +3,10 @@ module.exports = function shallowEqualObjects(objA, objB) {
     return true;
   }
 
+  if (!objA || !objB) {
+    return false;
+  }
+
   var aKeys = Object.keys(objA);
   var bKeys = Object.keys(objB);
   var len = aKeys.length;

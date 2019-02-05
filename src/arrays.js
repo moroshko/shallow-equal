@@ -3,6 +3,10 @@ module.exports = function shallowEqualArrays(arrA, arrB) {
     return true;
   }
 
+  if (!arrA || !arrB) {
+    return false;
+  }
+
   var len = arrA.length;
 
   if (arrB.length !== len) {

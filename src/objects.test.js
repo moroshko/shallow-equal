@@ -6,6 +6,18 @@ var obj2 = { language: 'elm' };
 
 var tests = [
   {
+    should: 'return false when A is falsy',
+    objA: null,
+    objB: {},
+    result: false
+  },
+  {
+    should: 'return false when B is falsy',
+    objA: {},
+    objB: undefined,
+    result: false
+  },
+  {
     should: 'return true when objects are ===',
     objA: obj1,
     objB: obj1,

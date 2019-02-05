@@ -8,6 +8,18 @@ var obj3 = { technology: 'react' };
 
 var tests = [
   {
+    should: 'return false when A is falsy',
+    arrA: null,
+    arrB: [],
+    result: false
+  },
+  {
+    should: 'return false when B is falsy',
+    arrA: [],
+    arrB: undefined,
+    result: false
+  },
+  {
     should: 'return true when arrays are ===',
     arrA: arr,
     arrB: arr,
