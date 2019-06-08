@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var shallowEqualObjects = require('./objects');
+var shallowEqual = require('./objects').shallowEqual;
 
 var obj1 = { game: 'chess', year: '1979' };
 var obj2 = { language: 'elm' };
@@ -49,10 +49,10 @@ var tests = [
   }
 ];
 
-describe('shallowEqualObjects', function() {
+describe('shallowEqual', function() {
   tests.forEach(function(test) {
     it('should ' + test.should, function() {
-      expect(shallowEqualObjects(test.objA, test.objB)).to.equal(test.result);
+      expect(shallowEqual(test.objA, test.objB)).to.equal(test.result);
     });
   });
 });

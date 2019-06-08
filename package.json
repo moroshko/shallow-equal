@@ -7,15 +7,13 @@
     "url": "https://github.com/moroshko/shallow-equal.git"
   },
   "author": "Misha Moroshko <michael.moroshko@gmail.com>",
+  "main": "src/index.js",
   "scripts": {
     "lint": "eslint src",
     "test": "nyc mocha 'src/*.test.js'",
-    "dist": "rm -rf arrays objects && mkdir arrays objects && cp src/arrays.js arrays/index.js && cp src/objects.js objects/index.js",
-    "prebuild": "npm run lint && npm test",
-    "build": "npm run dist",
+    "build": "npm run lint && npm test",
     "preversion": "npm run prebuild",
-    "postversion": "git push && git push --tags",
-    "prepublish": "npm run dist"
+    "postversion": "git push && git push --tags"
   },
   "devDependencies": {
     "chai": "^3.5.0",
