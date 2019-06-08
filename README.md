@@ -27,10 +27,10 @@ shallowEqualArrays([{ a: 5 }], [{ a: 5 }]); // => false
 ```
 
 ```js
-import { shallowEqual } from "shallow-equal";
+import { shallowEqualObjects } from "shallow-equal";
 
-shallowEqual({ a: 5, b: "abc" }, { a: 5, b: "abc" }); // => true
-shallowEqual({ a: 5, b: {} }, { a: 5, b: {} }); // => false
+shallowEqualObjects({ a: 5, b: "abc" }, { a: 5, b: "abc" }); // => true
+shallowEqualObjects({ a: 5, b: {} }, { a: 5, b: {} }); // => false
 ```
 
 ## License

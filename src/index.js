@@ -1,5 +1,5 @@
-var shallowEqual = require('./objects.js').shallowEqual;
+var shallowEqualObjects = require('./objects.js').shallowEqualObjects;
 var shallowEqualArrays = require('./arrays.js').shallowEqualArrays;
 
-exports.shallowEqual = shallowEqual;
+exports.shallowEqualObjects = shallowEqualObjects;
 exports.shallowEqualArrays = shallowEqualArrays;
