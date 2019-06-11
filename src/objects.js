@@ -1,4 +1,4 @@
-function shallowEqualObjects(objA, objB) {
+module.exports = function shallowEqualObjects(objA, objB) {
   if (objA === objB) {
     return true;
   }
@@ -25,5 +25,3 @@ function shallowEqualObjects(objA, objB) {
 
   return true;
 }
-
-exports.shallowEqualObjects = shallowEqualObjects;

@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var shallowEqualArrays = require('./arrays').shallowEqualArrays;
+var shallowEqualArrays = require('./arrays');
 
 var arr = [1, 2, 3];
 var obj1 = { game: 'chess' };

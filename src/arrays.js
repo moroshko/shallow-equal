@@ -1,4 +1,4 @@
-function shallowEqualArrays(arrA, arrB) {
+module.exports = function shallowEqualArrays(arrA, arrB) {
   if (arrA === arrB) {
     return true;
   }
@@ -21,5 +21,3 @@ function shallowEqualArrays(arrA, arrB) {
 
   return true;
 }
-
-exports.shallowEqualArrays = shallowEqualArrays;
