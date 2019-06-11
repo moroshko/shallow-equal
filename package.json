@@ -7,22 +7,29 @@
     "url": "https://github.com/moroshko/shallow-equal.git"
   },
   "author": "Misha Moroshko <michael.moroshko@gmail.com>",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
   "scripts": {
     "lint": "eslint src",
-    "test": "nyc mocha 'src/*.test.js'",
-    "dist": "rm -rf arrays objects && mkdir arrays objects && cp src/arrays.js arrays/index.js && cp src/objects.js objects/index.js",
+    "test": "nyc mocha -r esm 'src/*.test.js'",
+    "build:objects": "rm -rf objects && rollup -f cjs -i src/objects.js -o objects/index.js",
+    "build:arrays": "rm -rf arrays && rollup -f cjs -i src/arrays.js -o arrays/index.js",
+    "build:cjs": "rollup -f cjs -i src/index.js -o dist/index.cjs.js",
+    "build:esm": "rollup -f esm -i src/index.js -o dist/index.esm.js",
     "prebuild": "npm run lint && npm test",
-    "build": "npm run dist",
+    "build": "npm run build:objects && npm run build:arrays && rm -rf dist && npm run build:cjs && npm run build:esm",
     "preversion": "npm run prebuild",
     "postversion": "git push && git push --tags",
-    "prepublish": "npm run dist"
+    "prepublish": "npm run build"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "eslint": "^3.4.0",
     "eslint-plugin-mocha": "^4.4.0",
+    "esm": "^3.2.25",
     "mocha": "^3.0.2",
-    "nyc": "^8.1.0"
+    "nyc": "^8.1.0",
+    "rollup": "^1.15.0"
   },
   "files": [
     "arrays",

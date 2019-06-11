@@ -1,5 +1,5 @@
-var expect = require('chai').expect;
-var shallowEqualObjects = require('./objects');
+import { expect } from 'chai';
+import shallowEqualObjects from './objects';
 
 var obj1 = { game: 'chess', year: '1979' };
 var obj2 = { language: 'elm' };
