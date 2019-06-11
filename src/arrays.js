@@ -1,4 +1,4 @@
-module.exports = function shallowEqualArrays(arrA, arrB) {
+export default function shallowEqualArrays(arrA, arrB) {
   if (arrA === arrB) {
     return true;
   }
@@ -20,4 +20,4 @@ module.exports = function shallowEqualArrays(arrA, arrB) {
   }
 
   return true;
-};
+}

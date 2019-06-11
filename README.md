@@ -20,14 +20,14 @@ npm install shallow-equal --save
 ## Usage
 
 ```js
-var shallowEqualArrays = require("shallow-equal/arrays");
+import { shallowEqualArrays } "shallow-equal";
 
 shallowEqualArrays([1, 2, 3], [1, 2, 3]); // => true
 shallowEqualArrays([{ a: 5 }], [{ a: 5 }]); // => false
 ```
 
 ```js
-var shallowEqualObjects = require("shallow-equal/objects");
+import { shallowEqualObjects } from "shallow-equal";
 
 shallowEqualObjects({ a: 5, b: "abc" }, { a: 5, b: "abc" }); // => true
 shallowEqualObjects({ a: 5, b: {} }, { a: 5, b: {} }); // => false
