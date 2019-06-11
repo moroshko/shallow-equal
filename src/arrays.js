@@ -20,4 +20,4 @@ module.exports = function shallowEqualArrays(arrA, arrB) {
   }
 
   return true;
-}
+};

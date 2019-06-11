@@ -24,4 +24,4 @@ module.exports = function shallowEqualObjects(objA, objB) {
   }
 
   return true;
-}
+};
