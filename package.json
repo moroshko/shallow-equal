@@ -11,7 +11,7 @@
   "module": "dist/index.esm.js",
   "scripts": {
     "lint": "eslint src",
-    "test": "nyc mocha -r esm 'src/*.test.js'",
+    "test": "nyc --require esm mocha 'src/*.test.js'",
     "build:objects": "rm -rf objects && rollup -f cjs -i src/objects.js -o objects/index.js",
     "build:arrays": "rm -rf arrays && rollup -f cjs -i src/arrays.js -o arrays/index.js",
     "build:cjs": "rollup -f cjs -i src/index.js -o dist/index.cjs.js",
@@ -27,8 +27,8 @@
     "eslint": "^3.4.0",
     "eslint-plugin-mocha": "^4.4.0",
     "esm": "^3.2.25",
-    "mocha": "^3.0.2",
-    "nyc": "^8.1.0",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1",
     "rollup": "^1.15.0"
   },
   "files": [
