@@ -20,7 +20,7 @@
     "build": "npm run build:objects && npm run build:arrays && rm -rf dist && npm run build:cjs && npm run build:esm",
     "preversion": "npm run prebuild",
     "postversion": "git push && git push --tags",
-    "prepublish": "npm run build"
+    "prepare": "npm run build"
   },
   "devDependencies": {
     "chai": "^3.5.0",
