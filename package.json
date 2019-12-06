@@ -1,6 +1,6 @@
 {
   "name": "shallow-equal",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Minimalistic shallow equality check for arrays/objects",
   "repository": {
     "type": "git",
@@ -24,12 +24,12 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "eslint": "^5.16.0",
-    "eslint-plugin-mocha": "^5.3.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-mocha": "^6.2.2",
     "esm": "^3.2.25",
-    "mocha": "^6.1.4",
+    "mocha": "^6.2.2",
     "nyc": "^14.1.1",
-    "rollup": "^1.15.1"
+    "rollup": "^1.27.8"
   },
   "files": [
     "dist",
