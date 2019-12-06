@@ -46,6 +46,12 @@ var tests = [
     objA: { first: obj1, second: obj2 },
     objB: { second: obj2, first: obj1 },
     result: true
+  },
+  {
+    should: 'return false when objectA contains undefined',
+    objA: { first: undefined },
+    objB: { second: 'green' },
+    result: false
   }
 ];
 

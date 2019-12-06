@@ -18,7 +18,7 @@ export default function shallowEqualObjects(objA, objB) {
   for (var i = 0; i < len; i++) {
     var key = aKeys[i];
 
-    if (objA[key] !== objB[key]) {
+    if (objA[key] !== objB[key] || !objB.hasOwnProperty(key)) {
       return false;
     }
   }
