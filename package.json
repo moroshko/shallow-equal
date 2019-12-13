@@ -28,28 +28,35 @@
   },
   "license": "MIT",
   "author": "Misha Moroshko <michael.moroshko@gmail.com>",
-  "files": [
-    "dist",
-    "arrays",
-    "objects"
-  ],
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
   "scripts": {
     "prebuild": "npm run lint && npm test",
-    "build": "npm run build:objects && npm run build:arrays && rm -rf dist && npm run build:cjs && npm run build:esm",
-    "build:arrays": "rm -rf arrays && rollup -f cjs -i src/arrays.ts -o arrays/index.js --config",
-    "build:cjs": "rollup -f cjs -i src/index.ts -o dist/index.cjs.js --config",
-    "build:esm": "rollup -f esm -i src/index.ts -o dist/index.esm.js --config",
-    "build:objects": "rm -rf objects && rollup -f cjs -i src/objects.ts -o objects/index.js --config",
-    "build-tsc": "run-p build-tsc-cjs build-tsc-esm",
-    "build-tsc-esm": "exitzero tsc src/* --module es2015 --target es2015 --outDir dist-esm --declaration --declarationDir dist-esm || ver>nul",
-    "build-tsc-cjs": "exitzero tsc src/* --module commonjs --target es6 --outDir dist-cjs --declaration --declarationDir dist-cjs || ver>nul",
+    "build": "pika build",
     "lint": "eslint src --ext .ts",
     "prepare": "npm run build",
     "test": "jest",
     "preversion": "npm run prebuild",
     "postversion": "git push && git push --tags"
+  },
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-standard-pkg",
+        {
+          "exclude": [
+            "__tests__/**/*"
+          ]
+        }
+      ],
+      [
+        "@pika/plugin-build-node"
+      ],
+      [
+        "@pika/plugin-build-web"
+      ],
+      [
+        "@pika/plugin-build-types"
+      ]
+    ]
   },
   "jest": {
     "transform": {
@@ -72,26 +79,19 @@
     }
   },
   "devDependencies": {
-    "@babel/parser": "^7.7.5",
-    "@babel/types": "^7.7.4",
+    "@pika/pack": "^0.5.0",
+    "@pika/plugin-build-node": "^0.8.1",
+    "@pika/plugin-build-types": "^0.8.1",
+    "@pika/plugin-build-web": "^0.8.1",
+    "@pika/plugin-standard-pkg": "^0.8.1",
     "@types/jest": "^24.0.23",
     "@typescript-eslint/eslint-plugin": "^2.11.0",
     "@typescript-eslint/parser": "^2.11.0",
     "eslint": "^6.7.2",
     "eslint-plugin-jest": "^23.1.1",
     "eslint-plugin-json": "^2.0.1",
-    "eslint-plugin-mocha": "^6.2.2",
-    "exitzero": "^1.0.1",
-    "i": "^0.3.6",
     "jest": "^24.9.0",
-    "jest-diff": "^24.9.0",
-    "npm-run-parallel": "^0.6.0",
-    "rollup": "^1.27.8",
-    "rollup-plugin-typescript": "^1.0.1",
     "ts-jest": "^24.2.0",
     "typescript": "^3.7.3"
-  },
-  "dependencies": {
-    "npm-run-all": "^4.1.5"
   }
 }
