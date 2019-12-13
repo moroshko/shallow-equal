@@ -1,12 +1,11 @@
-import { expect } from 'chai';
-import shallowEqualArrays from './arrays';
+import shallowEqualArrays from '../src/arrays';
 
-var arr = [1, 2, 3];
-var obj1 = { game: 'chess' };
-var obj2 = { company: 'facebook' };
-var obj3 = { technology: 'react' };
+const arr = [1, 2, 3];
+const obj1 = { game: 'chess' };
+const obj2 = { company: 'facebook' };
+const obj3 = { technology: 'react' };
 
-var tests = [
+const tests = [
   {
     should: 'return false when A is falsy',
     arrA: null,
@@ -54,7 +53,7 @@ var tests = [
 describe('shallowEqualArrays', function() {
   tests.forEach(function(test) {
     it('should ' + test.should, function() {
-      expect(shallowEqualArrays(test.arrA, test.arrB)).to.equal(test.result);
+      expect(shallowEqualArrays(test.arrA, test.arrB)).toEqual(test.result);
     });
   });
 });

@@ -1,4 +1,6 @@
-export default function shallowEqualArrays(arrA, arrB) {
+type validValue = any[] | null | undefined
+
+export default function shallowEqualArrays(arrA: validValue, arrB: validValue): boolean {
   if (arrA === arrB) {
     return true;
   }
@@ -7,13 +9,13 @@ export default function shallowEqualArrays(arrA, arrB) {
     return false;
   }
 
-  var len = arrA.length;
+  const len = arrA.length;
 
   if (arrB.length !== len) {
     return false;
   }
 
-  for (var i = 0; i < len; i++) {
+  for (let i = 0; i < len; i++) {
     if (arrA[i] !== arrB[i]) {
       return false;
     }

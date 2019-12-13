@@ -1,10 +1,9 @@
-import { expect } from 'chai';
-import shallowEqualObjects from './objects';
+import shallowEqualObjects from '../src/objects';
 
-var obj1 = { game: 'chess', year: '1979' };
-var obj2 = { language: 'elm' };
+const obj1 = { game: 'chess', year: '1979' };
+const obj2 = { language: 'elm' };
 
-var tests = [
+const tests = [
   {
     should: 'return false when A is falsy',
     objA: null,
@@ -58,7 +57,7 @@ var tests = [
 describe('shallowEqualObjects', function() {
   tests.forEach(function(test) {
     it('should ' + test.should, function() {
-      expect(shallowEqualObjects(test.objA, test.objB)).to.equal(test.result);
+      expect(shallowEqualObjects(test.objA, test.objB)).toEqual(test.result);
     });
   });
 });

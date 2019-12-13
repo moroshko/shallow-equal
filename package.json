@@ -2,40 +2,6 @@
   "name": "shallow-equal",
   "version": "1.2.1",
   "description": "Minimalistic shallow equality check for arrays/objects",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/moroshko/shallow-equal.git"
-  },
-  "author": "Misha Moroshko <michael.moroshko@gmail.com>",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
-  "scripts": {
-    "lint": "eslint src",
-    "test": "nyc --require esm mocha 'src/*.test.js'",
-    "build:objects": "rm -rf objects && rollup -f cjs -i src/objects.js -o objects/index.js",
-    "build:arrays": "rm -rf arrays && rollup -f cjs -i src/arrays.js -o arrays/index.js",
-    "build:cjs": "rollup -f cjs -i src/index.js -o dist/index.cjs.js",
-    "build:esm": "rollup -f esm -i src/index.js -o dist/index.esm.js",
-    "prebuild": "npm run lint && npm test",
-    "build": "npm run build:objects && npm run build:arrays && rm -rf dist && npm run build:cjs && npm run build:esm",
-    "preversion": "npm run prebuild",
-    "postversion": "git push && git push --tags",
-    "prepare": "npm run build"
-  },
-  "devDependencies": {
-    "chai": "^4.2.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-mocha": "^6.2.2",
-    "esm": "^3.2.25",
-    "mocha": "^6.2.2",
-    "nyc": "^14.1.1",
-    "rollup": "^1.27.8"
-  },
-  "files": [
-    "dist",
-    "arrays",
-    "objects"
-  ],
   "keywords": [
     "shallow",
     "equality",
@@ -56,22 +22,76 @@
     "check",
     "test"
   ],
-  "nyc": {
-    "lines": 100,
-    "statements": 100,
-    "functions": 100,
-    "branches": 100,
-    "include": [
-      "src/*.js"
-    ],
-    "exclude": [
-      "src/*.test.js"
-    ],
-    "reporter": [
-      "lcov",
-      "text-summary"
-    ],
-    "check-coverage": true
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moroshko/shallow-equal.git"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "author": "Misha Moroshko <michael.moroshko@gmail.com>",
+  "files": [
+    "dist",
+    "arrays",
+    "objects"
+  ],
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "scripts": {
+    "prebuild": "npm run lint && npm test",
+    "build": "npm run build:objects && npm run build:arrays && rm -rf dist && npm run build:cjs && npm run build:esm",
+    "build:arrays": "rm -rf arrays && rollup -f cjs -i src/arrays.ts -o arrays/index.js --config",
+    "build:cjs": "rollup -f cjs -i src/index.ts -o dist/index.cjs.js --config",
+    "build:esm": "rollup -f esm -i src/index.ts -o dist/index.esm.js --config",
+    "build:objects": "rm -rf objects && rollup -f cjs -i src/objects.ts -o objects/index.js --config",
+    "build-tsc": "run-p build-tsc-cjs build-tsc-esm",
+    "build-tsc-esm": "exitzero tsc src/* --module es2015 --target es2015 --outDir dist-esm --declaration --declarationDir dist-esm || ver>nul",
+    "build-tsc-cjs": "exitzero tsc src/* --module commonjs --target es6 --outDir dist-cjs --declaration --declarationDir dist-cjs || ver>nul",
+    "lint": "eslint src --ext .ts",
+    "prepare": "npm run build",
+    "test": "jest",
+    "preversion": "npm run prebuild",
+    "postversion": "git push && git push --tags"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "collectCoverage": true,
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
+  },
+  "devDependencies": {
+    "@babel/parser": "^7.7.5",
+    "@babel/types": "^7.7.4",
+    "@types/jest": "^24.0.23",
+    "@typescript-eslint/eslint-plugin": "^2.11.0",
+    "@typescript-eslint/parser": "^2.11.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-jest": "^23.1.1",
+    "eslint-plugin-json": "^2.0.1",
+    "eslint-plugin-mocha": "^6.2.2",
+    "exitzero": "^1.0.1",
+    "i": "^0.3.6",
+    "jest": "^24.9.0",
+    "jest-diff": "^24.9.0",
+    "npm-run-parallel": "^0.6.0",
+    "rollup": "^1.27.8",
+    "rollup-plugin-typescript": "^1.0.1",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.3"
+  },
+  "dependencies": {
+    "npm-run-all": "^4.1.5"
+  }
 }
