@@ -1,3 +1,5 @@
+import is from 'core-js-pure/es/object/is';
+
 export default function shallowEqualObjects(objA, objB) {
   if (objA === objB) {
     return true;
@@ -18,7 +20,7 @@ export default function shallowEqualObjects(objA, objB) {
   for (var i = 0; i < len; i++) {
     var key = aKeys[i];
 
-    if (objA[key] !== objB[key] || !Object.prototype.hasOwnProperty.call(objB, key)) {
+    if (is(objA[key], objB[key]) === false || !Object.prototype.hasOwnProperty.call(objB, key)) {
       return false;
     }
   }
