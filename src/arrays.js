@@ -1,4 +1,4 @@
-import is from 'core-js-pure/es/object/is';
+import objectIs from 'object-is';
 
 export default function shallowEqualArrays(arrA, arrB) {
   if (arrA === arrB) {
@@ -16,7 +16,7 @@ export default function shallowEqualArrays(arrA, arrB) {
   }
 
   for (var i = 0; i < len; i++) {
-    if (is(arrA[i], arrB[i]) === false) {
+    if (objectIs(arrA[i], arrB[i]) === false) {
       return false;
     }
   }
