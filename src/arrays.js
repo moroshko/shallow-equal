@@ -1,3 +1,5 @@
+import { objectIs } from './util';
+
 export default function shallowEqualArrays(arrA, arrB) {
   if (arrA === arrB) {
     return true;
@@ -14,7 +16,7 @@ export default function shallowEqualArrays(arrA, arrB) {
   }
 
   for (var i = 0; i < len; i++) {
-    if (arrA[i] !== arrB[i]) {
+    if (objectIs(arrA[i], arrB[i]) === false) {
       return false;
     }
   }

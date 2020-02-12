@@ -48,6 +48,18 @@ var tests = [
     arrA: [obj1, obj2, obj3],
     arrB: [obj1, obj2, obj3],
     result: true
+  },
+  {
+    should: 'return true if all corresponding elements pass Object.is',
+    arrA: [Number.NaN],
+    arrB: [0/0],
+    result: true
+  },
+  {
+    should: 'return false if all corresponding elements don\'t pass Object.is',
+    arrA: [-0],
+    arrB: [+0],
+    result: false
   }
 ];
 

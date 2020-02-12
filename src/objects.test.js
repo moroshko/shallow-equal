@@ -52,6 +52,18 @@ var tests = [
     objA: { first: undefined },
     objB: { second: 'green' },
     result: false
+  },
+  {
+    should: 'return true when all values pass Object.is',
+    objA: { first: Number.NaN },
+    objB: { first: 0/0 },
+    result: true
+  },
+  {
+    should: 'return false when all values don\'t pass Object.is',
+    objA: { first: 0 },
+    objB: { first: -0 },
+    result: false
   }
 ];
 
