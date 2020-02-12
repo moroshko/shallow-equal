@@ -1,4 +1,4 @@
-import objectIs from 'object-is';
+import { objectIs } from './util';
 
 export default function shallowEqualArrays(arrA, arrB) {
   if (arrA === arrB) {

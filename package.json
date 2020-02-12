@@ -9,9 +9,6 @@
   "author": "Misha Moroshko <michael.moroshko@gmail.com>",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
-  "dependencies": {
-    "object-is": "^1.0.2"
-  },
   "scripts": {
     "lint": "eslint src",
     "test": "nyc --require esm mocha 'src/*.test.js'",

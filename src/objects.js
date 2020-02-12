@@ -1,4 +1,4 @@
-import objectIs from 'object-is';
+import { objectIs } from './util';
 
 export default function shallowEqualObjects(objA, objB) {
   if (objA === objB) {
