@@ -9,8 +9,8 @@ const arrObj3 = { technology: "react" };
 
 const arrTests: {
   should: string;
-  arrA: validArrayValue<any>;
-  arrB: validArrayValue<any>;
+  arrA: validArrayValue;
+  arrB: validArrayValue;
   result: boolean;
 }[] = [
   {
@@ -63,8 +63,8 @@ const obj2 = { language: "elm" };
 
 const objTests: {
   should: string;
-  objA: validObjectValue<any>;
-  objB: validObjectValue<any>;
+  objA: validObjectValue;
+  objB: validObjectValue;
   result: boolean;
 }[] = [
   {

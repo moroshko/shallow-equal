@@ -1,8 +1,8 @@
-export type validObjectValue<T> = Record<string, T> | null | undefined;
+export type validObjectValue = Record<string, any> | null | undefined;
 
 export default function shallowEqualObjects<T>(
-  objA: validObjectValue<T>,
-  objB: validObjectValue<T>
+  objA: validObjectValue,
+  objB: validObjectValue
 ): boolean {
   if (objA === objB) {
     return true;
