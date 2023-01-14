@@ -35,7 +35,7 @@
     "url": "https://github.com/moroshko/shallow-equal.git"
   },
   "license": "MIT",
-  "author": "Philip Su <philip@sparkanvil.com>",
+  "author": "Philip Su <39933441+fivecar@users.noreply.github.com>",
   "scripts": {
     "prebuild": "npm run lint && npm test",
     "build": "microbundle-crl --no-compress --format modern,cjs",
