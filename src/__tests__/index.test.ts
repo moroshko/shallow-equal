@@ -1,5 +1,6 @@
+import { dequal } from "dequal";
 import { validArrayValue } from "../arrays";
-import { shallowEqual, shallowEqualArrays } from "../index";
+import { eq, shallowEqual, shallowEqualArrays } from "../index";
 import shallowEqualObjects, { validObjectValue } from "../objects";
 
 const arr = [1, 2, 3];
@@ -117,34 +118,101 @@ const objTests: {
   },
 ];
 
-describe("shallowEqual on arrays", () => {
-  arrTests.forEach((test) => {
-    it("should " + test.should, () => {
-      expect(shallowEqual(test.arrA, test.arrB)).toEqual(test.result);
+describe("shallow-equal", () => {
+  describe("shallowEqual on arrays", () => {
+    arrTests.forEach((test) => {
+      it("should " + test.should, () => {
+        expect(shallowEqual(test.arrA, test.arrB)).toEqual(test.result);
+      });
     });
   });
-});
 
-describe("shallowEqual on objects", () => {
-  objTests.forEach((test) => {
-    it("should " + test.should, () => {
-      expect(shallowEqual(test.objA, test.objB)).toEqual(test.result);
+  describe("shallowEqual on objects", () => {
+    objTests.forEach((test) => {
+      it("should " + test.should, () => {
+        expect(shallowEqual(test.objA, test.objB)).toEqual(test.result);
+      });
     });
   });
-});
 
-describe("shallowEqualObjects", () => {
-  objTests.forEach((test) => {
-    it("should " + test.should, () => {
-      expect(shallowEqualObjects(test.objA, test.objB)).toEqual(test.result);
+  describe("shallowEqualObjects", () => {
+    objTests.forEach((test) => {
+      it("should " + test.should, () => {
+        expect(shallowEqualObjects(test.objA, test.objB)).toEqual(test.result);
+      });
     });
   });
-});
 
-describe("shallowEqualArrays", () => {
-  arrTests.forEach((test) => {
-    it("should " + test.should, () => {
-      expect(shallowEqualArrays(test.arrA, test.arrB)).toEqual(test.result);
+  describe("shallowEqualArrays", () => {
+    arrTests.forEach((test) => {
+      it("should " + test.should, () => {
+        expect(shallowEqualArrays(test.arrA, test.arrB)).toEqual(test.result);
+      });
     });
+  });
+
+  describe("custom comparators", () => {
+    it("should use a custom comparator", () => {
+      const comparator = jest.fn((a: any, b: any) => a === b);
+      const arrA = [1, 2, 3];
+      const arrB = [1, 2, 3];
+
+      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore: this'll go away when #33 lands
+      expect(shallowEqual(arrA, arrB, comparator)).toEqual(true);
+      expect(comparator).toHaveBeenCalledTimes(3);
+
+      const badComparator = jest.fn((a: any, b: any) => a !== b);
+
+      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore: this'll go away when #33 lands
+      expect(shallowEqual(arrA, arrB, badComparator)).toEqual(false);
+    });
+  });
+
+  it("should use deep-equal equivalents correctly on objects", () => {
+    const objA = { first: obj1, second: obj2 };
+    const objB = { second: { language: "elm" }, first: obj1 };
+    const objC = { second: { hi: "there", what: { depth: 3 } }, first: obj1 };
+    const objD = { second: { hi: "there", what: { depth: 3 } }, first: obj1 };
+
+    expect(eq(objA, objB)).toEqual(false);
+    expect(dequal(objA, objB)).toEqual(true);
+
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore: this'll go away when #33 lands
+    expect(shallowEqual(objA, objB, dequal)).toEqual(true);
+    expect(shallowEqualObjects(objA, objB, dequal)).toEqual(true);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore: this'll go away when #33 lands
+    expect(shallowEqualObjects(objA, objC, dequal)).toEqual(false);
+    expect(shallowEqualObjects(objC, objD)).toEqual(false);
+    expect(shallowEqualObjects(objC, objD, dequal)).toEqual(true);
+  });
+
+  it("should use deep-equal equivalents correctly on arrays", () => {
+    const arrA = [{ first: obj1, second: obj2 }];
+    const arrB = [{ second: { language: "elm" }, first: obj1 }];
+    const arrC = [
+      arrA,
+      { second: { hi: "there", what: { depth: 3 } }, first: obj1 },
+    ];
+    const arrD = [
+      arrB,
+      { second: { hi: "there", what: { depth: 3 } }, first: obj1 },
+    ];
+
+    expect(eq(arrA, arrB)).toEqual(false);
+    expect(dequal(arrA, arrB)).toEqual(true);
+
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore: this'll go away when #33 lands
+    expect(shallowEqual(arrA, arrB, dequal)).toEqual(true);
+    expect(shallowEqualArrays(arrA, arrB, dequal)).toEqual(true);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore: this'll go away when #33 lands
+    expect(shallowEqualArrays(arrA, arrC, dequal)).toEqual(false);
+    expect(shallowEqualArrays(arrC, arrD)).toEqual(false);
+    expect(shallowEqualArrays(arrC, arrD, dequal)).toEqual(true);
   });
 });
