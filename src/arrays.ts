@@ -1,8 +1,11 @@
+import { Comparator, eq } from "./index";
+
 export type validArrayValue<T> = T[] | null | undefined;
 
 export default function shallowEqualArrays<T>(
   arrA: validArrayValue<T>,
-  arrB: validArrayValue<T>
+  arrB: validArrayValue<T>,
+  comparator: Comparator = eq
 ): boolean {
   if (arrA === arrB) {
     return true;
@@ -19,7 +22,7 @@ export default function shallowEqualArrays<T>(
   }
 
   for (let i = 0; i < len; i++) {
-    if (arrA[i] !== arrB[i]) {
+    if (!comparator(arrA[i], arrB[i])) {
       return false;
     }
   }
