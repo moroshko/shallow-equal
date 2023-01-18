@@ -41,7 +41,7 @@
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "lint": "eslint src --ext .ts",
     "prepare": "npm run build",
-    "test": "jest",
+    "test": "jest --coverage",
     "release": "release-it"
   },
   "jest": {

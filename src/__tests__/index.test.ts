@@ -133,6 +133,19 @@ describe("shallowEqual on objects", () => {
   });
 });
 
+describe("shallowEqual on mixed array/objects", () => {
+  it("should act correctly when types are mixed", () => {
+    expect(shallowEqual(["boris", "johnson"], { boris: "johnson" })).toBe(
+      false
+    );
+    expect(shallowEqual({ boris: "johnson" }, ["boris", "johnson"])).toBe(
+      false
+    );
+    expect(shallowEqual(["boris", "johnson"], { liz: "truss" })).toBe(false);
+    expect(shallowEqual({}, [])).toBe(false);
+  });
+});
+
 describe("shallowEqualObjects", () => {
   objTests.forEach((test) => {
     it("should " + test.should, () => {
