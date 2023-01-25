@@ -11,8 +11,8 @@ function shallowEqual<T extends Comparable>(a: T, b: T): boolean {
     return false;
   }
 
-  if (aIsArr) {
-    return shallowEqualArrays(a as any[], b as any[]);
+  if (aIsArr && bIsArr) {
+    return shallowEqualArrays(a, b);
   }
 
   return shallowEqualObjects(a, b);
