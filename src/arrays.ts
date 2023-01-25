@@ -1,8 +1,8 @@
-export type validArrayValue<T> = T[] | null | undefined;
+export type validArrayValue = any[] | null | undefined;
 
-export default function shallowEqualArrays<T>(
-  arrA: validArrayValue<T>,
-  arrB: validArrayValue<T>
+export default function shallowEqualArrays(
+  arrA: validArrayValue,
+  arrB: validArrayValue
 ): boolean {
   if (arrA === arrB) {
     return true;

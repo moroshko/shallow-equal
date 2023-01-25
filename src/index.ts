@@ -1,17 +1,21 @@
-import shallowEqualArrays, { validArrayValue } from "./arrays";
-import shallowEqualObjects, { validObjectValue } from "./objects";
+import shallowEqualArrays from "./arrays";
+import shallowEqualObjects from "./objects";
 
-type Comparable<T> = Record<string, T> | T[] | null | undefined;
+type Comparable = Record<string, any> | any[] | null | undefined;
 
-function shallowEqual<T extends Comparable<T>>(a: T, b: T): boolean {
-  if (Array.isArray(a) || Array.isArray(b)) {
-    return shallowEqualArrays(a as validArrayValue<T>, b as validArrayValue<T>);
+function shallowEqual<T extends Comparable>(a: T, b: T): boolean {
+  const aIsArr = Array.isArray(a);
+  const bIsArr = Array.isArray(b);
+
+  if (aIsArr !== bIsArr) {
+    return false;
   }
 
-  return shallowEqualObjects(
-    a as validObjectValue<T>,
-    b as validObjectValue<T>
-  );
+  if (aIsArr && bIsArr) {
+    return shallowEqualArrays(a, b);
+  }
+
+  return shallowEqualObjects(a, b);
 }
 
 export { shallowEqual, shallowEqualObjects, shallowEqualArrays };

@@ -9,8 +9,8 @@ const arrObj3 = { technology: "react" };
 
 const arrTests: {
   should: string;
-  arrA: validArrayValue<any>;
-  arrB: validArrayValue<any>;
+  arrA: validArrayValue;
+  arrB: validArrayValue;
   result: boolean;
 }[] = [
   {
@@ -63,8 +63,8 @@ const obj2 = { language: "elm" };
 
 const objTests: {
   should: string;
-  objA: validObjectValue<any>;
-  objB: validObjectValue<any>;
+  objA: validObjectValue;
+  objB: validObjectValue;
   result: boolean;
 }[] = [
   {
@@ -130,6 +130,19 @@ describe("shallowEqual on objects", () => {
     it("should " + test.should, () => {
       expect(shallowEqual(test.objA, test.objB)).toEqual(test.result);
     });
+  });
+});
+
+describe("shallowEqual on mixed array/objects", () => {
+  it("should act correctly when types are mixed", () => {
+    expect(shallowEqual(["boris", "johnson"], { boris: "johnson" })).toBe(
+      false
+    );
+    expect(shallowEqual({ boris: "johnson" }, ["boris", "johnson"])).toBe(
+      false
+    );
+    expect(shallowEqual(["boris", "johnson"], { liz: "truss" })).toBe(false);
+    expect(shallowEqual({}, [])).toBe(false);
   });
 });
 
