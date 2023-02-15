@@ -1,6 +1,6 @@
 {
   "name": "shallow-equal",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Typescript-compatible minimalistic shallow equality check for arrays/objects",
   "main": "dist/index.js",
   "module": "dist/index.modern.mjs",
