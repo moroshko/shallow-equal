@@ -3,7 +3,7 @@
   "version": "3.0.0",
   "description": "Typescript-compatible minimalistic shallow equality check for arrays/objects",
   "main": "dist/index.js",
-  "module": "dist/index.modern.js",
+  "module": "dist/index.modern.mjs",
   "source": "src/index.ts",
   "types": "dist/index.d.ts",
   "keywords": [
